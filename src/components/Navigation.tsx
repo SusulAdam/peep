@@ -5,7 +5,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { HomeScreen, LoginScreen, AllEmployess } from "../screen";
 
-const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function Tabs(): JSX.Element {
