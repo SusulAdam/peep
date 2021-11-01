@@ -1,5 +1,4 @@
 import * as React from "react";
-import { View, Text, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -9,7 +8,7 @@ import { HomeScreen, LoginScreen, AllEmployess } from "../screen";
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-function Tabs() {
+function Tabs(): JSX.Element {
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Tab.Screen name="Home" component={HomeScreen} />
@@ -20,14 +19,13 @@ function Tabs() {
 
 const StackApp = createNativeStackNavigator();
 
-const navOptionHandle = () => ({
+const navOptionHandle = (): { headerShown: boolean } => ({
   headerShown: false,
 });
 
-function Navigation() {
+function Navigation(): JSX.Element {
   return (
     <NavigationContainer>
-      {/* <Tabs /> */}
       <StackApp.Navigator initialRouteName="Login">
         <StackApp.Screen
           name="Login"
