@@ -10,7 +10,7 @@ function AllEmployess(): JSX.Element {
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       {screenState.loading && <Text>LOADIND</Text>}
       {screenState.error && <Text>Error</Text>}
-      {screenState.users && <Text>user</Text>}
+      {!screenState.loading && !screenState.error && <Text>user</Text>}
     </View>
   );
 }
