@@ -2,20 +2,17 @@ import * as React from "react";
 import {
   View,
   Text,
-  Button,
   ImageBackground,
   Image,
   ViewStyle,
   ImageStyle,
   TextStyle,
   TextInput,
-  Platform,
   Pressable,
   TouchableOpacity,
   Keyboard,
 } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Ionicons } from "@expo/vector-icons";
 import { COLORS } from "../constans/theme";
 
 type RootStackParamList = {
@@ -79,28 +76,16 @@ function LoginScreen({ navigation }: Props): JSX.Element {
                 Incorrect username or password
               </Text>
             )}
-            {Platform.OS === "android" ? (
-              <Pressable>
-                <Text style={style.forgotText}>Forgot Password?</Text>
-              </Pressable>
-            ) : (
-              <TouchableOpacity>
-                <Text style={style.forgotText}>Forgot password?</Text>
-              </TouchableOpacity>
-            )}
-            {Platform.OS === "android" ? (
-              <Pressable style={style.button} onPress={handleLogin}>
-                <Text style={style.buttonText}>Login</Text>
-              </Pressable>
-            ) : (
-              <TouchableOpacity
-                style={style.button}
-                activeOpacity={0.8}
-                onPress={handleLogin}
-              >
-                <Text style={style.buttonText}>Login</Text>
-              </TouchableOpacity>
-            )}
+            <TouchableOpacity>
+              <Text style={style.forgotText}>Forgot password?</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={style.button}
+              activeOpacity={0.8}
+              onPress={handleLogin}
+            >
+              <Text style={style.buttonText}>Login</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </Pressable>
