@@ -8,6 +8,7 @@ export type User = {
   picture: {
     thumbnail: string;
   };
+  email: string;
 };
 
 export type UserListState = {

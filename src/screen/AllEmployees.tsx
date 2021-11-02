@@ -32,8 +32,12 @@ const AllEmployess: FunctionComponent = () => {
 const UserListItem: FunctionComponent<{ user: User }> = ({ user }) => {
   return (
     <View>
-      <Image source={{ uri: user.picture.thumbnail }} />
+      <Image
+        style={{ width: 50, height: 50 }}
+        source={{ uri: user.picture.thumbnail }}
+      />
       <Text>{user.name.first}</Text>
+      <Text>{user.email}</Text>
     </View>
   );
 };
