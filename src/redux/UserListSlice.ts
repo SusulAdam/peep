@@ -2,7 +2,12 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import * as apiClient from "./apiClient";
 
 export type User = {
-  name: string;
+  name: {
+    first: string;
+  };
+  picture: {
+    thumbnail: string;
+  };
 };
 
 export type UserListState = {
@@ -14,19 +19,19 @@ export type UserListState = {
 const initialState: UserListState = {
   users: [],
   loading: false,
-  error: false,
+  error: true,
 };
 
 export const fetchUsers = createAsyncThunk<{ users: User[] }, { page: number }>(
   "fetchUsers",
   async ({ page }) => {
-    const respone = await apiClient.fetchUsers(page, 10);
-    if (respone.kind === "success") {
+    const response = await apiClient.fetchUsers(page, 12);
+    if (response.kind === "success") {
       return {
-        users: respone.body ?? [],
+        users: response.body ?? [],
       };
     } else {
-      throw "Error fetching user ";
+      throw "Error fetching users";
     }
   }
 );
@@ -38,13 +43,16 @@ const userListSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchUsers.pending, (state) => {
-        (state.loading = true), (state.error = false);
+        state.loading = true;
+        state.error = false;
       })
       .addCase(fetchUsers.fulfilled, (state, action) => {
-        (state.loading = false), (state.users = action.payload.users);
+        state.users = state.users.concat(action.payload.users);
+        state.loading = false;
       })
       .addCase(fetchUsers.rejected, (state) => {
-        (state.loading = false), (state.error = true);
+        state.error = true;
+        state.loading = false;
       });
   },
 });

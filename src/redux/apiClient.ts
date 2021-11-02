@@ -3,16 +3,16 @@ import { User } from "./UserListSlice";
 type ResponseKind = "success" | "failure";
 
 type NetworkResponse<T> = {
-  kind: string;
+  kind: ResponseKind;
   body?: T;
 };
 
 export const fetchUsers = async (
   page: number,
-  count: number
+  count?: number
 ): Promise<NetworkResponse<User[]>> => {
-  const respone = await fetch(
-    `https://randomuser.me/api/?page=3&results=10&seed=abc`,
+  const response = await fetch(
+    `https://randomuser.me/api/?page=${page}&results=${count}`,
     {
       method: "GET",
       headers: {
@@ -21,8 +21,8 @@ export const fetchUsers = async (
       },
     }
   );
-  if (respone.ok) {
-    const json = await respone.json();
+  if (response.ok) {
+    const json = await response.json();
     return {
       kind: "success",
       body: json.results,

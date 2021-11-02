@@ -1,25 +1,41 @@
-import * as React from "react";
-import { View, Text } from "react-native";
+import React, { FunctionComponent, useEffect } from "react";
+import { FlatList, StyleSheet, Text, View, Image } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../redux/UserListSlice";
 import { RootState } from "../redux/store";
+import { User } from "../redux/UserListSlice";
 
-function AllEmployess(): JSX.Element {
+const AllEmployess: FunctionComponent = () => {
   const dispatch = useDispatch();
+
   const screenState = useSelector((state: RootState) => state.userList);
 
-  React.useEffect(() => {
-    dispatch(fetchUsers({ page: 1 }));
-  });
+  useEffect(() => {
+    dispatch(fetchUsers({ page: 2 }));
+  }, []);
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      {screenState.loading && <Text>LOADIND</Text>}
-      {screenState.error && <Text>Error</Text>}
-      {!screenState.loading && !screenState.error && <Text>user</Text>}
-      <Text>{JSON.stringify(screenState.users)}</Text>
+    <>
+      {screenState.loading && <Text>LOADING</Text>}
+      {screenState.error && <Text>ERROR</Text>}
+      <FlatList
+        data={screenState.users}
+        keyExtractor={(_, index) => {
+          return index.toString();
+        }}
+        renderItem={({ item }) => <UserListItem user={item} />}
+      />
+    </>
+  );
+};
+
+const UserListItem: FunctionComponent<{ user: User }> = ({ user }) => {
+  return (
+    <View>
+      <Image source={{ uri: user.picture.thumbnail }} />
+      <Text>{user.name.first}</Text>
     </View>
   );
-}
+};
 
 export { AllEmployess };
