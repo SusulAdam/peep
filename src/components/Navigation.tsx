@@ -16,7 +16,10 @@ function Tabs(): JSX.Element {
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: COLORS["violet-dark_2"],
+          backgroundColor: COLORS["violet-dark_3"],
+          height: 85,
+          alignItems: "center",
+          borderTopWidth: 0,
         },
       }}
     >
@@ -47,7 +50,7 @@ function Tabs(): JSX.Element {
         }}
       />
       <Tab.Screen
-        name="AllEmployess"
+        name="AllEmployees"
         component={AllEmployess}
         options={{
           tabBarIcon: ({ focused }) => (
@@ -85,7 +88,7 @@ const navOptionHandle = (): { headerShown: boolean } => ({
 function Navigation(): JSX.Element {
   return (
     <NavigationContainer>
-      <StackApp.Navigator initialRouteName="Login">
+      <StackApp.Navigator initialRouteName="Tabs">
         <StackApp.Screen
           name="Login"
           component={LoginScreen}

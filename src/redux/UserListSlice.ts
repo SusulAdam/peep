@@ -4,9 +4,11 @@ import * as apiClient from "./apiClient";
 export type User = {
   name: {
     first: string;
+    last: string;
   };
   picture: {
     thumbnail: string;
+    large: string;
   };
   email: string;
 };
