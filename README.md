@@ -5,6 +5,7 @@ The idea behind the project was to make an application to monitor employess.
 Login and password for the application
 
 Login: Boss
+</br>
 Password: 123
 
 ## Running
@@ -29,7 +30,7 @@ Now there two options to run app.
 
 <br>
 
-Projects are created with:
+## Projects are created with:
 
 - React Native
 - API
