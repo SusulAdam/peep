@@ -74,7 +74,7 @@ const BestWorstEmployee = ({
             />
           </View>
           <View style={styles.box}>
-            <Text style={styles.dataText}>Hours worked per mount</Text>
+            <Text style={styles.dataText}>Hours worked per month</Text>
             <Text style={styles.dataText}>{hours}</Text>
           </View>
           <View style={styles.bar}>

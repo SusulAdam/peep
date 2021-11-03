@@ -88,7 +88,7 @@ const navOptionHandle = (): { headerShown: boolean } => ({
 function Navigation(): JSX.Element {
   return (
     <NavigationContainer>
-      <StackApp.Navigator initialRouteName="Tabs">
+      <StackApp.Navigator initialRouteName="Login">
         <StackApp.Screen
           name="Login"
           component={LoginScreen}

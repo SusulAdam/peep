@@ -18,7 +18,7 @@ function HomeScreen(): JSX.Element {
   }, []);
 
   return (
-    <ScrollView contentContainerStyle={style.scroll} nestedScrollEnabled>
+    <ScrollView contentContainerStyle={style.scroll}>
       <LinearGradient colors={["#535162", "#222128"]} style={style.gradient}>
         <Text style={style.userTittle}>User ID</Text>
         <View style={style.header}>
